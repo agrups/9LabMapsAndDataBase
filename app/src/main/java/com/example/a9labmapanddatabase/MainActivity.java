@@ -15,23 +15,16 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 
-// [START maps_marker_on_map_ready]
 public class MainActivity extends AppCompatActivity
         implements OnMapReadyCallback {
 
     MyDatabaseHelper myDB;
-    ArrayList<String> id, latitude, longitude;
 
-    // [START_EXCLUDE]
-    // [START maps_marker_get_map_async]
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         myDB = new MyDatabaseHelper(MainActivity.this);
-        id = new ArrayList<>();
-        latitude = new ArrayList<>();
-        longitude = new ArrayList<>();
-        // Retrieve the content view that renders the map.
+
         setContentView(R.layout.activity_main);
 
         // Get the SupportMapFragment and request notification when the map is ready to be used.
@@ -53,10 +46,7 @@ public class MainActivity extends AppCompatActivity
                 googleMap.addMarker(new MarkerOptions().position(location));
             }
         }
-
         //googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
         // [END_EXCLUDE]
     }
-    // [END maps_marker_on_map_ready_add_marker]
 }
-// [END maps_marker_on_map_ready]

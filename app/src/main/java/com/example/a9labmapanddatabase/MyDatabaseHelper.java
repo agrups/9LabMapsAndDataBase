@@ -50,7 +50,7 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
         if(result == -1){
             Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
         }else {
-            Toast.makeText(context, "Added Successfully!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Pridėta sekmingai!", Toast.LENGTH_SHORT).show();
         }
     }
 

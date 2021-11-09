@@ -26,6 +26,7 @@ public class FirstWindow extends AppCompatActivity {
     Button showMapButton;
     String latitude;
     String longitude;
+    boolean found;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +36,6 @@ public class FirstWindow extends AppCompatActivity {
         saveButton = findViewById(R.id.saveButton);
         showMapButton = findViewById(R.id.mapButton);
         addressInput = findViewById(R.id.koordinates);
-        init();
 
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,13 +66,13 @@ public class FirstWindow extends AppCompatActivity {
                     //execute our method for searching
                     geoLocate();
                 }
-
                 return false;
             }
         });
     }
 
     private void geoLocate(){
+        found = false;
         Log.d(TAG, "geoLocate: geolocating");
 
         String searchString = addressInput.getText().toString();
@@ -86,6 +86,7 @@ public class FirstWindow extends AppCompatActivity {
         }
 
         if(list.size() > 0){
+            found = true;
             Address address = list.get(0);
             latitude = String.valueOf(address.getLatitude());
             longitude = String.valueOf(address.getLongitude());
@@ -98,8 +99,14 @@ public class FirstWindow extends AppCompatActivity {
     }
 
     private void saveAddress(View v) {
-        MyDatabaseHelper myDB = new MyDatabaseHelper(FirstWindow.this);
-        myDB.addLocation(latitude, longitude);
+        geoLocate();
+        if(found == true){
+            MyDatabaseHelper myDB = new MyDatabaseHelper(FirstWindow.this);
+            myDB.addLocation(latitude, longitude);
+        }
+        else{
+            Toast.makeText(this, "Vieta nerasta", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void showMapWindow(View v) {

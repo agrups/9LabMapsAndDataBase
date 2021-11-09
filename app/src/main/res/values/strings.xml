@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">9LabMapAndDataBase</string>
+    <string name="title_activity_maps">Map with Marker</string>
+    <string name="title_activity_first_window">FirstWindow</string>
+    <string name="koordinates_input">Iveskite koordinates</string>
+    <string name="saveButton">Išsaugoti</string>
+    <string name="mapButton">Rodyti žemėlapį</string>
+</resources>

@@ -1,0 +1,3 @@
+rootProject.name = "9LabMapAndDataBase"
+include ':app'
+include ':app:myapplication'
